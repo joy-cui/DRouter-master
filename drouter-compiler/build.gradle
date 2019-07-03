@@ -1,0 +1,21 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':drouter-annotation')
+//    implementation project(':subMoudle:DRouter-master:drouter-annotation')
+
+//    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+//    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
+//    implementation 'com.squareup:javapoet:1.9.0'
+    implementation 'com.google.auto.service:auto-service:1.0-rc3'
+    implementation 'com.squareup:javapoet:1.9.0'
+
+}
+
+tasks.withType(JavaCompile){
+    options.encoding='UTF-8'
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

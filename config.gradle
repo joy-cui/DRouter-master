@@ -1,0 +1,43 @@
+
+ext {
+    android = [
+            applicationId:"com.suirui.drouter",
+            compileSdkVersion: 28,
+            targetSdkVersion : 28,
+            minSdkVersion    : 21,
+            buildToolsVersion: "28.0.3",
+            versionCode:1,
+            versionName:"1.0.0"
+    ]
+
+
+    modules = [
+            login: [
+                    isStandalone : false,
+                    applicationId: "${rootProject.ext.android.applicationId}.login",
+            ],
+            circle  : [
+                    isStandalone : false,
+                    applicationId: "${rootProject.ext.android.applicationId}.circle",
+            ],
+    ]
+
+
+    dependencies = [
+            supportv4 : "com.android.support:support-v4:26.+",
+            supportv7 : "com.android.support:appcompat-v7:28.0.0",
+            recyclerviewv7 : 'com.android.support:recyclerview-v7:28.0.0',
+            constraintlayout :  'com.android.support.constraint:constraint-layout:1.1.3',
+
+    ]
+
+
+    isDebugType = false //module
+    isPrintLog= false
+    isJar=true
+
+}
+project.ext.set("is_debug_type",  ext.isPrintLog) //主APP
+project.ext.set("is_print_log", ext.isPrintLog)
+project.ext.set("isJar", ext.isJar)
+

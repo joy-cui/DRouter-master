@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DRouter-masterNew.iml" filepath="$PROJECT_DIR$/DRouter-masterNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business.iml" filepath="$PROJECT_DIR$/business/business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circle_module/circle_module.iml" filepath="$PROJECT_DIR$/circle_module/circle_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drouter-annotation/drouter-annotation.iml" filepath="$PROJECT_DIR$/drouter-annotation/drouter-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drouter-api/drouter-api.iml" filepath="$PROJECT_DIR$/drouter-api/drouter-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drouter-compiler/drouter-compiler.iml" filepath="$PROJECT_DIR$/drouter-compiler/drouter-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drouter_common/drouter_common.iml" filepath="$PROJECT_DIR$/drouter_common/drouter_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login/login.iml" filepath="$PROJECT_DIR$/login/login.iml" />
+    </modules>
+  </component>
+</project>

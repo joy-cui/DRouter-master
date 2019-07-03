@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [ moduleName : project.getName() ]
+//            }
+//        }
+
+        def moduleName = project.getName()
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        // ARouter处理器所需参数
+                        moduleName: moduleName,
+                        // XModulable处理器所需参数
+                        XModule   : moduleName
+                ]
+            }
+        }
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+     implementation rootProject.ext.dependencies.supportv7
+    implementation rootProject.ext.dependencies.constraintlayout
+     annotationProcessor project(':drouter-compiler')
+    api project(':drouter_common')
+    if(!rootProject.ext.modules.login.isStandalone.toBoolean()){
+        implementation project(':login')
+    }
+    if(!rootProject.ext.modules.circle.isStandalone.toBoolean()){
+        implementation project(':circle_module')
+    }
+
+}

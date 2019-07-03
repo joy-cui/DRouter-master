@@ -1,0 +1,68 @@
+if(rootProject.ext.modules.login.isStandalone.toBoolean()){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    repositories {
+        mavenCentral()
+    }
+
+    defaultConfig {
+        if(rootProject.ext.modules.login.isStandalone.toBoolean()){
+            applicationId rootProject.ext.modules.login.applicationId
+        }
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        def moduleName = project.getName()
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        // ARouter处理器所需参数
+                        moduleName: moduleName,
+                        // XModulable处理器所需参数
+                        XModule   : moduleName
+                ]
+            }
+        }
+
+        sourceSets {
+            main {
+                if (rootProject.ext.modules.login.isStandalone.toBoolean()) {
+                    manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                } else {
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+    }
+
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.dependencies.supportv7
+    annotationProcessor project(':drouter-compiler')
+    api project(':drouter_common')
+    implementation project(':business')
+}
